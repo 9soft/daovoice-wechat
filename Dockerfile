@@ -22,7 +22,7 @@ ENV APP_DEBUG=true
 ENV NODE_ENV=production
 ENV API_ROOT=http://im.daovoice.co/v1/
 
-RUN gulp build
+RUN npm run build
 
 EXPOSE 80
 
