@@ -4,7 +4,8 @@
   "description": "DaoCloud DaoVoice",
   "scripts": {
     "test": "npm test",
-    "start": "webpack-dev-server -d"
+    "start": "webpack-dev-server -d",
+    "build": "webpack"
   },
   "keywords": [
     "DaoCloud",
