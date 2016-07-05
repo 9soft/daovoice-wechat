@@ -4,20 +4,18 @@ var views = require('koa-views');
 var proxy = require('koa-proxy');
 var app = new Koa();
 
-app.use(proxy({
-  host: 'https://open.weixin.qq.com',
-  match: /^\/weichat-open\//        // ...just the /static folder
-  // map: function(path) { return 'weichat-open/' + path; },
-}));
+// app.use(proxy({
+//   host: 'https://open.weixin.qq.com',
+//   match: /^\/weichat-open\//        // ...just the /static folder
+//   // map: function(path) { return 'weichat-open/' + path; },
+// }));
 
 app.use(proxy({
   host: 'https://api.weixin.qq.com',
   match: /^\/weichat-api\//        // ...just the /static folder
-  // map: function(path) { return 'weichat-api/' + path; },
 }));
 
 app.use(serve('./static'));
-
 app.use(views(__dirname + '/views', {
   map: {
     html: 'underscore',
