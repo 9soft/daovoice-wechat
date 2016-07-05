@@ -11,7 +11,7 @@ var app = new Koa();
 // }));
 
 app.use(proxy({
-  host: 'https://api.weixin.qq.com',
+  host: 'http://api.weixin.qq.com',
   match: /^\/weichat-api\//        // ...just the /static folder
 }));
 
