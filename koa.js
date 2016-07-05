@@ -1,4 +1,5 @@
 var Koa = require('koa');
+var logger = require('koa-logger')
 var serve = require('koa-static');
 var views = require('koa-views');
 var proxy = require('koa-proxy');
@@ -9,6 +10,7 @@ var app = new Koa();
 //   match: /^\/weichat-open\//        // ...just the /static folder
 //   // map: function(path) { return 'weichat-open/' + path; },
 // }));
+app.use(logger())
 
 app.use(proxy({
   host: 'http://api.weixin.qq.com',
