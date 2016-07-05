@@ -1,7 +1,7 @@
 import queryString from 'query-string';
 import 'whatwg-fetch';
 
-const wechatAuthUrl = 'https://open.weixin.qq.com/connect/oauth2/authorize';
+const wechatAuthUrl = 'weichat-open/connect/oauth2/authorize';
 const appId = 'wx7b63356cbabf7325';
 const appsecret = '3366203648c7536204eb1e673fa0c26b';
 const query = location.search;
@@ -29,7 +29,7 @@ if (!code) {
 
   console.log(redirectUri);
 
-  // location.href = redirectUri;
+  location.href = redirectUri;
   // console.log(redirectUri === 'https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx520c15f417810387&redirect_uri=https%3A%2F%2Fchong.qq.com%2Fphp%2Findex.php%3Fd%3D%26c%3DwxAdapter%26m%3DmobileDeal%26showwxpaytitle%3D1%26vb2ctag%3D4_2030_5_1194_60&response_type=code&scope=snsapi_base&state=123#wechat_redirect');
 
   // ?appid=wx520c15f417810387&redirect_uri=https%3A%2F%2Fchong.qq.com%2Fphp%2Findex.php%3Fd%3D%26c%3DwxAdapter%26m%3DmobileDeal%26showwxpaytitle%3D1%26vb2ctag%3D4_2030_5_1194_60&response_type=code&scope=snsapi_base&state=123#wechat_redirect
@@ -45,7 +45,7 @@ const buildQuery = queryString.stringify({
   code,
   grant_type: 'authorization_code',
 });
-const getTokenUrl = `https://api.weixin.qq.com/sns/oauth2/access_token?${buildQuery}`;
+const getTokenUrl = `weichat-api/sns/oauth2/access_token?${buildQuery}`;
 
 console.log(getTokenUrl);
 
@@ -57,16 +57,16 @@ console.log(getTokenUrl);
 //    "scope":"SCOPE",
 //    "unionid": "o6_bmasdasdsad6_2sgVt7hMZOPfL"
 // }
-// fetch(getTokenUrl)
-//   .then(response => {
-//     return response.json();
-//   }).then(user => {
-//   // 3 调用 DaoVoice
-//     console.log('parsed json', user);
-//     daovoice('update', { user_id: user.openid });
-//     daovoice('openMessages');
-//   }).catch(ex => {
-//     console.log('parsing failed', ex);
-//   });
+fetch(getTokenUrl)
+  .then(response => {
+    return response.json();
+  }).then(user => {
+  // 3 调用 DaoVoice
+    console.log('parsed json', user);
+    daovoice('update', { user_id: user.openid });
+    daovoice('openMessages');
+  }).catch(ex => {
+    console.log('parsing failed', ex);
+  });
 
 

@@ -4,7 +4,8 @@
   "description": "DaoCloud DaoVoice",
   "scripts": {
     "test": "npm test",
-    "start": "webpack-dev-server -d",
+    "dev": "webpack-dev-server -d",
+    "start": "node --harmony koa.js",
     "build": "webpack"
   },
   "keywords": [
@@ -13,7 +14,13 @@
     "Wechat"
   ],
   "dependencies": {
+    "koa": "^2.0.0",
+    "koa-proxy": "^0.6.0",
+    "koa-router": "^5.4.0",
+    "koa-static": "^2.0.0",
+    "koa-views": "^5.0.2",
     "query-string": "^4.2.2",
+    "underscore": "^1.8.3",
     "webpack": "^1.13.1",
     "whatwg-fetch": "^1.0.0"
   },

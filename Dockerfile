@@ -27,4 +27,4 @@ RUN npm run build
 EXPOSE 80
 
 CMD cp -r . /usr/share/nginx/html/ && \
- nginx -g 'daemon off;'
+ npm start

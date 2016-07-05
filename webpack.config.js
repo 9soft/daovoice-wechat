@@ -6,6 +6,7 @@ module.exports = {
   entry: './index.js',
   output: {
     path: process.cwd(),
+    path:'static',
     filename: 'build.js',
   },
   module: {
