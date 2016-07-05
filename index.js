@@ -27,7 +27,9 @@ if (!code) {
 
   const redirectUri = `${wechatAuthUrl}?${buildQuery}#wechat_redirect`;
 
-  location.href = redirectUri;
+  console.log(redirectUri);
+
+  // location.href = redirectUri;
   // console.log(redirectUri === 'https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx520c15f417810387&redirect_uri=https%3A%2F%2Fchong.qq.com%2Fphp%2Findex.php%3Fd%3D%26c%3DwxAdapter%26m%3DmobileDeal%26showwxpaytitle%3D1%26vb2ctag%3D4_2030_5_1194_60&response_type=code&scope=snsapi_base&state=123#wechat_redirect');
 
   // ?appid=wx520c15f417810387&redirect_uri=https%3A%2F%2Fchong.qq.com%2Fphp%2Findex.php%3Fd%3D%26c%3DwxAdapter%26m%3DmobileDeal%26showwxpaytitle%3D1%26vb2ctag%3D4_2030_5_1194_60&response_type=code&scope=snsapi_base&state=123#wechat_redirect
@@ -36,6 +38,7 @@ if (!code) {
 
 // 2 通过 code 获取用户
 // https://api.weixin.qq.com/sns/oauth2/access_token?appid=APPID&secret=SECRET&code=CODE&grant_type=authorization_code
+// https://api.weixin.qq.com/sns/oauth2/access_token?appid=wx7b63356cbabf7325&code=011xHDM40Mj4Aw19MXO40P7CM40xHDMM&grant_type=authorization_code&secret=3366203648c7536204eb1e673fa0c26b
 const buildQuery = queryString.stringify({
   appid: appId,
   secret: appsecret,
@@ -43,6 +46,8 @@ const buildQuery = queryString.stringify({
   grant_type: 'authorization_code',
 });
 const getTokenUrl = `https://api.weixin.qq.com/sns/oauth2/access_token?${buildQuery}`;
+
+console.log(getTokenUrl);
 
 // {
 //    "access_token":"ACCESS_TOKEN",
@@ -52,16 +57,16 @@ const getTokenUrl = `https://api.weixin.qq.com/sns/oauth2/access_token?${buildQu
 //    "scope":"SCOPE",
 //    "unionid": "o6_bmasdasdsad6_2sgVt7hMZOPfL"
 // }
-fetch(getTokenUrl)
-  .then(response => {
-    return response.json();
-  }).then(user => {
-  // 3 调用 DaoVoice
-    console.log('parsed json', user);
-    daovoice('update', { user_id: user.openid });
-    daovoice('openMessages');
-  }).catch(ex => {
-    console.log('parsing failed', ex);
-  });
+// fetch(getTokenUrl)
+//   .then(response => {
+//     return response.json();
+//   }).then(user => {
+//   // 3 调用 DaoVoice
+//     console.log('parsed json', user);
+//     daovoice('update', { user_id: user.openid });
+//     daovoice('openMessages');
+//   }).catch(ex => {
+//     console.log('parsing failed', ex);
+//   });
 
 
