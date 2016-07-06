@@ -42,7 +42,7 @@ const buildQuery = queryString.stringify({
   code,
   grant_type: 'authorization_code',
 });
-const getTokenUrl = `https://api.weixin.qq.com/sns/oauth2/access_token?${buildQuery}`;
+const getTokenUrl = `/wecaht-api/sns/oauth2/access_token?${buildQuery}`;
 
 // {
 //    "access_token":"ACCESS_TOKEN",
