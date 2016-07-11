@@ -2,9 +2,9 @@ import queryString from 'query-string';
 import 'whatwg-fetch';
 
 const wechatAuthUrl = 'https://open.weixin.qq.com/connect/oauth2/authorize';
-const appId = process.env.WEXIN_APP_ID;
+const appId = "wx3835b5b04b704dfe";
  // 'wx7b63356cbabf7325';
-const appsecret = process.env.WEIXIN_APP_SECRET;
+const appsecret = "9c5eaf0f1a671a6c84f27446af9966be";
 const query = location.search;
 
 
